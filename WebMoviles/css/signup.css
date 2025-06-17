@@ -1,0 +1,118 @@
+/* Estilos base para móviles */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    padding: 15px;
+    font-family: Arial, sans-serif;
+}
+
+.login-box {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.logo h1 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.input-group {
+    margin: 12px 0;
+    width: 100%;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.show-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 13px;
+    color: #666;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+}
+
+.confirm-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.confirm-btn:active {
+    background-color: #0099e6;
+}
+
+.links {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-link {
+    color: #ff4444;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Adaptación para pantallas más grandes (opcional) */
+@media (min-width: 768px) {
+    .login-box {
+        max-width: 400px;
+        padding: 30px;
+    }
+    .logo img {
+        width: 120px;
+    }
+    .logo h1 {
+        font-size: 24px;
+    }
+}

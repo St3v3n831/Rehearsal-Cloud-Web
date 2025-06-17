@@ -1,0 +1,183 @@
+/* Estilos base para móviles */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    padding: 15px;
+    font-family: Arial, sans-serif;
+}
+
+.login-box {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo img {
+    width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px;
+}
+
+.logo h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin: 12px 0;
+    width: 100%;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.show-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px; /* Tamaño aumentado para mejor visibilidad */
+    color: #666;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px 10px; /* Más área táctil */
+    user-select: none; /* Evita selección de texto */
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.login-btn:active {
+    background-color: #0099e6;
+}
+
+.links {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.forgot-password {
+    display: block;
+    color: #666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.signup-link {
+    color: #ff4444;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Media queries para tablets y pantallas más grandes */
+@media (min-width: 768px) {
+    .login-box {
+        padding: 40px;
+        max-width: 450px;
+    }
+    
+    .logo img {
+        width: 150px;
+    }
+    
+    .logo h1 {
+        font-size: 28px;
+    }
+    
+    .input-group label {
+        font-size: 16px;
+    }
+    
+    .login-btn:hover {
+        background-color: #0099e6;
+    }
+}
+
+/* Optimización para pantallas muy pequeñas */
+@media (max-width: 360px) {
+    .login-box {
+        padding: 20px 15px;
+    }
+    
+    .logo img {
+        width: 100px;
+    }
+    
+    .logo h1 {
+        font-size: 22px;
+    }
+    
+    .input-group input {
+        padding: 10px;
+    }
+}
+
+/* Agregar al final de tu CSS */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    animation: fadeIn 0.3s;
+}
+
+.alert.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
