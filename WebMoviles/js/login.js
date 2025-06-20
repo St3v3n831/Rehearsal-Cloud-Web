@@ -38,7 +38,7 @@ function showAlert(type, message) {
 
 document.getElementById('signupLink').addEventListener('click', function(e) {
     e.preventDefault();
-    window.location.href = '../index.php?view=signup';
+    window.location.href = 'signup.html';
 });
 
 function togglePassword(fieldId) {
