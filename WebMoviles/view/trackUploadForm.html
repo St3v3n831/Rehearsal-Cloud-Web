@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Upload Form</title>
+    <link rel="stylesheet" href="../css/trackUpload.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- ZIP File Upload Section -->
+        <div class="card">
+            <h2>Upload Your Track Files</h2>
+
+            <div class="drop-zone" id="zipDropZone">
+                <input type="file" id="zipFileInput" accept=".zip" class="hidden">
+
+                <div id="zipUploadArea">
+                    <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
+                        </path>
+                    </svg>
+                    <p class="upload-text">Drag and drop your ZIP file here</p>
+                    <p class="upload-subtext">or click to browse your files</p>
+                    <button type="button" class="btn" onclick="document.getElementById('zipFileInput').click()">
+                        Select ZIP File
+                    </button>
+                    <p class="upload-specs">Only .zip files are accepted</p>
+                </div>
+
+                <div id="zipFileInfo" class="hidden">
+                    <div class="file-info">
+                        <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                        <span id="zipFileName"></span>
+                        <button type="button" class="remove-btn" onclick="removeZipFile()">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <p id="zipFileSize" class="upload-specs"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Track Information Form -->
+        <div class="card">
+            <h2>Give us a little bit of information about your track</h2>
+
+            <form id="trackForm" method="POST" action="../action/trackAction.php" enctype="multipart/form-data">
+                <!-- Hidden input for ZIP file -->
+                <input type="file" name="zip_file" id="hiddenZipInput" class="hidden">
+
+                <!-- Song Name -->
+                <div class="form-group">
+                    <label for="songName" class="form-label">Song Name</label>
+                    <input type="text" id="songName" name="song_name" class="form-input"
+                        placeholder="Enter a song name" required>
+                </div>
+
+                <!-- Artist Name -->
+                <div class="form-group">
+                    <label for="artistName" class="form-label">Artist</label>
+                    <textarea id="artistName" name="artist_name" class="form-input form-textarea"
+                        placeholder="Enter a name of the song artist" required></textarea>
+                </div>
+
+                <!-- File Type and BPM Row -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Tipo de archivo</label>
+                        <select name="file_type" class="form-select" required>
+                            <option value="">Select type of file</option>
+                            <option value="stereo">Stereo</option>
+                            <option value="mono">Mono</option>
+                            <option value="split">Split</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bpm" class="form-label">BPM</label>
+                        <input type="number" id="bpm" name="bpm" class="form-input" value="" min="40" max="300">
+                    </div>
+                </div>
+
+                <!-- Two Select Options Row -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Compas</label>
+                        <select name="option1" class="form-select" required>
+                            <option value="">Select option</option>
+                            <option value="2/4">2/4</option>
+                            <option value="3/4">3/4</option>
+                            <option value="4/4">4/4</option>
+                            <option value="5/4">5/4</option>
+                            <option value="6/8">6/8</option>
+                            <option value="7/8">7/8</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Tono</label>
+                        <select name="option2" class="form-select" required>
+                            <option value="">Select option</option>
+                            <option value="Ab">A♭</option>
+                            <option value="A">A</option>
+                            <option value="Bb">B♭</option>
+                            <option value="b_flat">b_flat</option>
+                            <option value="Db">D♭</option>
+                            <option value="D">D</option>
+                            <option value="Eb">E♭</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="F#_Gb">F♯ / G♭</option>
+                            <option value="G">G</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Note -->
+                <p class="note">* You may choose stereo or split only if you uploaded a ZIP with single audio file in it
+                </p>
+
+                <!-- Album Art Upload -->
+                <div class="form-group">
+                    <div class="album-art-zone" id="albumArtDropZone">
+                        <input type="file" id="albumArtInput" name="album_art" accept=".jpeg,.jpg,.png" class="hidden">
+
+                        <div id="albumArtUploadArea">
+                            <svg class="image-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            <p class="upload-text">Drag your custom album art here</p>
+                            <p class="upload-subtext">
+                                <span class="browse-link" onclick="document.getElementById('albumArtInput').click()">
+                                    or click here to browse your file
+                                </span>
+                            </p>
+                            <div class="upload-specs">
+                                <p>Your image should be at least 512×512 pixels</p>
+                                <p>Supported types are .jpeg, .jpg and .png</p>
+                            </div>
+                        </div>
+
+                        <div id="albumArtInfo" class="hidden">
+                            <div class="file-info">
+                                <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <span id="albumArtFileName"></span>
+                                <button type="button" class="remove-btn" onclick="removeAlbumArt()">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="upload-specs">Album art uploaded successfully</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div style="padding-top: 24px;">
+                    <button type="submit" class="btn btn-primary" style="padding: 12px 32px;">
+                        Submit Track Information
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Processing your submission...</p>
+        </div>
+    </div>
+
+    <script src="../js/trackUpload.js"></script>
+</body>
+
+</html>

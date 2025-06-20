@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rehearsal Cloud</title>
+    <link rel="stylesheet" href="../css/homepage.css">
+</head>
+
+<body>
+    <?php include 'help.php'; ?>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <!-- Logo and Navigation -->
+            <div class="logo-nav">
+                <div class="logo">
+                    <img src="../images/logoCloud.png" alt="Logo Rehearsal Cloud">
+                    <span class="logo-text">Rehearsal Cloud</span>
+                </div>
+
+                <nav class="nav">
+                    <a href="trackUploadForm.html">UploadTraks</a>
+                    <a href="#">Your Tracks</a>
+                    <a href="#">Rehearsal Connect</a>
+                    <a href="#">Open Help & Support</a>
+                </nav>
+            </div>
+
+            <!-- Right side actions -->
+            <div class="header-actions">
+                <a href="login.html" class="login-link">Log In</a>
+                <a href="signup.html" class="btn btn-primary">Join Free</a>
+
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="trackUploadForm.html">UploadTraks</a>
+                <a href="#">Your Tracks</a>
+                <a href="#">Rehearsal Connect</a>
+                 
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <!-- Left Content -->
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Welcome To<br>
+                    Rehearsal Cloud
+                </h1>
+
+                <p class="hero-description">
+                    <strong>Rehearsal Cloud</strong> provides worship leaders with quality and affordable tracks,
+                    hardware,
+                    software & training. We make complicated things simple so you can focus on what matters.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="signup.html" class="btn btn-secondary">Sign up for free</a>
+                </div>
+            </div>
+
+            <!-- Right Content - Software Interface -->
+            <div class="hero-image">
+                <div class="software-mockup">
+                    <img src="https://sjc.microlink.io/U94jaqoQhOmvk0qdFyui-WxiBgl_aJenjA5TT1g1Gq2nLg3e6u2EPtmxdKqRU5yL5lYbLhYBGJ5RNpQmg9hMlw.jpeg"
+                        alt="Interface showing audio tracks and controls">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Tracks Section -->
+    <section class="top-tracks">
+        <div class="top-tracks-container">
+            <h2 class="top-tracks-title">Top tracks</h2>
+            <p class="top-tracks-description">
+                Thousands of multitracks for songs worship leaders love
+            </p>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <!-- Left Content -->
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Why<br>
+                    Rehearsal Cloud?
+                </h1>
+
+                <p class="hero-description">
+                    If you're looking for a powerful and user-friendly solution to elevate 
+                    your live worship or performance experience, <strong>Rehearsal Cloud</strong>  is the perfect choice.
+                    Our app empowers musicians and worship teams to seamlessly integrate multitracks, click tracks, and cues 
+                    into their setlists — but with even more flexibility and intuitive control. Whether you're leading a small 
+                    team or a full band, our platform simplifies playback, enhances coordination, and supports spontaneous changes 
+                    during live moments. With built-in tools for set planning, real-time control, and cloud syncing,
+                    our app is designed to streamline rehearsals and deliver a polished, professional sound every time.
+                </p>
+            </div>
+
+            <!-- Right Content - Software Interface -->
+            <div class="hero-image">
+                <div class="software-mockup">
+                    <img src="../images/cta-music-production.webp"
+                        alt="Interface showing audio tracks and controls">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function (event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+
+            if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Handle responsive navigation
+        window.addEventListener('resize', function () {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (window.innerWidth >= 768) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

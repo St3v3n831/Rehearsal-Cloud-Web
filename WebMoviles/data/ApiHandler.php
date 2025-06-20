@@ -82,6 +82,48 @@ class ApiHandler
     {
         return $this->makeRequest('DELETE', "Auth/users/$id");
     }
+
+    /**
+     * Crea una nueva canción
+     * 
+     * @param array $track Datos de la canción
+     * @return array Respuesta del backend
+     */
+    public function createSong(array $track): array
+    {
+        $url = self::BASE_URL . '/Song/create-song';
+
+        // Prepara los campos para multipart/form-data (nombres exactos que espera la API)
+        $postFields = [
+            'SongName' => $track['songName'],
+            'Artist'   => $track['artistName'],
+            'BPM'      => $track['bpm'],
+            'Tone'     => $track['tono'],
+        ];
+
+        // Adjunta archivos si existen y son válidos
+        if (!empty($track['albumArtPath']) && file_exists($track['albumArtPath'])) {
+            $postFields['CoverImage'] = new CURLFile($track['albumArtPath']);
+        }
+        if (!empty($track['zipFilePath']) && file_exists($track['zipFilePath'])) {
+            $postFields['ZipFile'] = new CURLFile($track['zipFilePath']);
+        }
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $postFields);
+        // No pongas Content-Type, cURL lo pone automáticamente para multipart/form-data
+
+        $response = curl_exec($curl);
+        $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        curl_close($curl);
+
+        return [
+            'status_code' => $httpCode,
+            'response' => json_decode($response, true)
+        ];
+    }
 }
 
 
