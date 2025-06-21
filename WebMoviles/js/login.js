@@ -12,7 +12,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
         if(data.success) {
             alert('Login exitoso!');
             // Redirigir o mostrar datos
-            window.location.href = 'dashboard.php'; // ejemplo
+            window.location.href = 'homepage.html';
         } else {
             alert('Error: ' + data.message);
         }
