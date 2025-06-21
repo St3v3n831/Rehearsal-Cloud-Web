@@ -3,7 +3,7 @@
 class ApiHandler
 {
     // URL base del backend
-    private const BASE_URL = "http://192.168.100.18:5198/api";
+    private const BASE_URL = "http://localhost:5198/api";
 
     /**
      * Realiza una petición HTTP
