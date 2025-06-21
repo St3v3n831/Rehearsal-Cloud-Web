@@ -30,5 +30,25 @@ class TrackBusiness
             ];
         }
     }
+
+    public function getAllSongs()
+    {
+        $result = $this->apiHandler->getAllSongs();
+
+        if ($result['status_code'] === 200) {
+            return [
+                'success' => true,
+                'response' => $result['response'],
+                'statusCode' => $result['status_code']
+            ];
+        } else {
+            return [
+                'success' => false,
+                'response' => [],
+                'error' => $result['response']['error'] ?? 'API_ERROR',
+                'statusCode' => $result['status_code']
+            ];
+        }
+    }
 }
 ?>
